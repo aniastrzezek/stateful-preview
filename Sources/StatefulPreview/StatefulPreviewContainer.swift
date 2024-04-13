@@ -1,16 +1,16 @@
 import SwiftUI
 
-struct StatefulPreviewContainer<Value, Content: View>: View {
-    @State var value: Value
+public struct StatefulPreviewContainer<Value, Content: View>: View {
+    @State private var value: Value
 
-    var content: (Binding<Value>) -> Content
+    private var content: (Binding<Value>) -> Content
 
     init(_ value: Value, content: @escaping (Binding<Value>) -> Content) {
         self._value = State(wrappedValue: value)
         self.content = content
     }
 
-    var body: some View {
+    public var body: some View {
         content($value)
     }
 }

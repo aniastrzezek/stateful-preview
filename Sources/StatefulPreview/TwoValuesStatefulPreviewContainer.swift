@@ -1,10 +1,10 @@
 import SwiftUI
 
-struct TwoValuesStatefulPreviewContainer<FirstValue, SecondValue, Content: View>: View {
-    @State var value: FirstValue
-    @State var otherValue: SecondValue
+public struct TwoValuesStatefulPreviewContainer<FirstValue, SecondValue, Content: View>: View {
+    @State private var value: FirstValue
+    @State private var otherValue: SecondValue
 
-    var content: (Binding<FirstValue>, Binding<SecondValue>) -> Content
+    private var content: (Binding<FirstValue>, Binding<SecondValue>) -> Content
 
     init(first: FirstValue, second: SecondValue, content: @escaping (Binding<FirstValue>, Binding<SecondValue>) -> Content) {
         self._value = State(wrappedValue: first)
@@ -12,7 +12,7 @@ struct TwoValuesStatefulPreviewContainer<FirstValue, SecondValue, Content: View>
         self.content = content
     }
 
-    var body: some View {
+    public var body: some View {
         content($value, $otherValue)
     }
 }
