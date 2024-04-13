@@ -12,10 +12,6 @@ let package = Package(
             targets: ["StatefulPreview"]),
     ],
     targets: [
-        .target(
-            name: "StatefulPreview"),
-        .testTarget(
-            name: "StatefulPreviewTests",
-            dependencies: ["StatefulPreview"]),
+        .target(name: "StatefulPreview")
     ]
 )
